@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/screens.rpy", line 1614: 'pin_pong' is not a keyword argument or valid child of the screen statement.
+    pin_pong:
+            ^
+
+Ren'Py Version: Ren'Py 8.2.0.24012702
+Mon Apr 29 21:03:37 2024
