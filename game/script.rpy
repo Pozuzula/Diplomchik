@@ -1,25 +1,61 @@
 ﻿
-# Вы можете расположить сценарий своей игры в этом файле.
 
 # Определение персонажей игры.
-define e = Character('Eileen', color="#c8ffc8")
-image eileen = "eileen.png"
+define fan = Character('Анна Фандей', color="#c8ffc8")
+image fan = "images/pin_pong/fandei(1).png"
 
-# Вместо использования оператора image можете просто
-# складывать все ваши файлы изображений в папку images.
-# Например, сцену bg room можно вызвать файлом "bg room.png",
-# а eileen happy — "eileen happy.webp", и тогда они появятся в игре.
+
 
 # Игра начинается здесь:
 label start:
+    show fan at left with dissolve
 
+    fan "Привет. Давай поиграем?"
+
+    fan "Во что хочешь поиграть?"
+
+    menu igri:
+        "Выбери игру"
+
+        "Пин-понг":
+            jump ping_pong
+
+        "3 в ряд":
+            jump tri_v_ryd
+
+        "Поиск предметов":
+            jump poick_predmetov
+
+
+label konec:
+    show fan at left with dissolve
+
+    "Хорошо поиграли"
+    "Хочешь еще?"
+
+    menu echo:
+        "Poigraem?"
+
+        "Да":
+            jump igri
+
+        "Нет":
+            pass
+
+label tri_v_ryd:
+    pass
+
+
+
+label poick_predmetov:
+    pass
+
+
+label ping_pong:
     hide say
-    # play music "menu.mp3"
+
+    #play music "menu.mp3"
     scene black
     "Мини игра пин понг"
 
-    jump demo_minigame_pong #Переход на игру
-    
-
-    return
-
+    jump minigame_pong #Переход на игру
