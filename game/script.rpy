@@ -1,8 +1,9 @@
-﻿
+﻿init python:
+    res = False
 
 # Определение персонажей игры.
 define fan = Character('Анна Фандей', color="#c8ffc8")
-image fan = "images/pin_pong/fandei(1).png"
+image fan = "images/pin_pong/fandei.png"
 
 
 
@@ -43,12 +44,36 @@ label konec:
             pass
 
 label tri_v_ryd:
-    pass
+    "А тут ничего("
+    jump konec
 
 
 
 label poick_predmetov:
-    pass
+
+    scene black
+    # заполняем экран игры объектами
+    #$ InitGame("poisk_fon", 5.0, (1675, 600), "lampa", (1420, 445), "cvetok", (10, 10), "telefon", (1480, 810), "rychka", (1040, 780), "tetradka")
+    $ InitGame("poisk_fon", 5.0, (0, 0), "cvetok", (0, 0), "lampa", (0, 0), "telefon", (0, 0), "rychka", (0, 0), "tetradka" )
+    # показываем экран игры в качестве простого фона
+    $ GameAsBG()
+    with dissolve
+
+    # запускаем игру и играем
+    $ res = StartGame()
+
+    # снова показываем в качестве фона
+    # (но уже без найденных во время игры предметов)
+    $ GameAsBG()
+
+    # проверяем результаты игры и обыгрываем их в сценарии
+    if oRes:
+        "Фух... Вовремя"
+    else:
+        "Не успел("
+        
+    jump konec
+
 
 
 label ping_pong:
