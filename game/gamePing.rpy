@@ -9,27 +9,27 @@ init:
             def __init__(self):
 
                 renpy.Displayable.__init__(self)
-
+                
                 # Некоторые таблицы отображения, которые мы используем.
-                self.paddle = Image("images/pin_pong/pong.png")
-                self.ball = Image("images/pin_pong/pong_ball.png")
+                self.veslo = Image("images/pin_pong/pong.png")
+                self.mych = Image("images/pin_pong/pong_ball.png")
                 self.player = Text(_("Игрок"), size=36)
                 self.fanya = Text(_("Анна Фандей"), size=36)
                 self.ctb = Text(_("Игра началась"), size=36)
 
                 # Размеры некоторых изображений
-                self.PADDLE_WIDTH = 30
-                self.PADDLE_HEIGHT = 79
-                self.BALL_WIDTH = 15
-                self.BALL_HEIGHT = 15
-                self.COURT_TOP = 300
-                self.COURT_BOTTOM = 930
+                self.veslo_WIDTH = 30
+                self.veslo_HEIGHT = 79
+                self.mych_WIDTH = 15
+                self.mych_HEIGHT = 15
+                self.ctol_TOP = 300
+                self.ctol_BOTTOM = 930
 
                 # Если мяч застрял в весло.
                 self.stuck = True
 
                 # Позиции двух затворов.
-                self.playery = (self.COURT_BOTTOM - self.COURT_TOP) / 2
+                self.playery = (self.ctol_BOTTOM - self.ctol_TOP) / 2
                 self.computery = self.playery
 
                 # Скорость компьютера.
@@ -50,7 +50,7 @@ init:
                 self.winner = None
 
             def visit(self):
-                return [ self.paddle, self.ball, self.player, self.fanya, self.ctb ]
+                return [ self.veslo, self.mych, self.player, self.fanya, self.ctb ]
 
         # Пересчитывает положение мяча, ручками отбивается, и
 # рисует на экране.
@@ -87,34 +87,34 @@ init:
                 # Ручка отскакивает.
 
                 # Отскакивают от верхней.
-                ball_top = self.COURT_TOP + self.BALL_HEIGHT / 2 - 50
-                if self.by < ball_top:
-                    self.by = ball_top + (ball_top - self.by)
+                mych_top = self.ctol_TOP + self.mych_HEIGHT / 2 - 50
+                if self.by < mych_top:
+                    self.by = mych_top + (mych_top - self.by)
                     self.bdy = -self.bdy
                     renpy.sound.play("images/pin_pong/pong_beep.wav", channel=0)
 
                 # Отскакивают от дна.
-                ball_bot = self.COURT_BOTTOM - self.BALL_HEIGHT / 2 + 50
-                if self.by > ball_bot:
-                    self.by = ball_bot - (self.by - ball_bot)
+                mych_bot = self.ctol_BOTTOM - self.mych_HEIGHT / 2 + 50
+                if self.by > mych_bot:
+                    self.by = mych_bot - (self.by - mych_bot)
                     self.bdy = -self.bdy
                     renpy.sound.play("images/pin_pong/pong_beep.wav", channel=0)
 
                 # Это берет весло, и проверяет отскакивает.
-                def paddle(px, py, hotside):
+                def veslo(px, py, hotside):
 
                 # Отображение весло изображения
 # чтобы представить, зная, что изображения будут меньше.
 # (Это не в случае со всеми displayables. Твердый, Рамка,
 # Исправлена и будет расширяться, чтобы заполнить выделенное пространство.)
 # Проходим в ST и at.
-                    pi = renpy.render(self.paddle, 1980, 1020, st, at)
+                    pi = renpy.render(self.veslo, 1980, 1020, st, at)
 
                 # renpy.оказывать возвращает объект визуализации, который мы можем
 # блитировать на визуализации мы делаем.
-                    r.blit(pi, (int(px), int(py - self.PADDLE_HEIGHT / 2)))
+                    r.blit(pi, (int(px), int(py - self.veslo_HEIGHT / 2)))
 
-                    if py - self.PADDLE_HEIGHT / 2 <= self.by <= py + self.PADDLE_HEIGHT / 2:
+                    if py - self.veslo_HEIGHT / 2 <= self.by <= py + self.veslo_HEIGHT / 2:
 
                         hit = False
 
@@ -133,13 +133,13 @@ init:
                             self.bspeed *= 1.10
 
                 # Нарисуйте два весла.
-                paddle(130, self.playery, 120 + self.PADDLE_WIDTH)
-                paddle(1780, self.computery, 1780)
+                veslo(130, self.playery, 120 + self.veslo_WIDTH)
+                veslo(1780, self.computery, 1780)
 
             # Розыгрыш мяча.
-                ball = renpy.render(self.ball, 1980, 1020, st, at)
-                r.blit(ball, (int(self.bx - self.BALL_WIDTH / 2),
-                            int(self.by - self.BALL_HEIGHT / 2)))
+                mych = renpy.render(self.mych, 1980, 1020, st, at)
+                r.blit(mych, (int(self.bx - self.mych_WIDTH / 2),
+                            int(self.by - self.mych_HEIGHT / 2)))
 
                 # Показать имена игроков.
                 player = renpy.render(self.player,1980, 1020, st, at)
@@ -187,8 +187,8 @@ init:
                     self.stuck = False
 
                 # Установить положение ракетки игрока
-                y = max(y, self.COURT_TOP)
-                y = min(y, self.COURT_BOTTOM)
+                y = max(y, self.ctol_TOP)
+                y = min(y, self.ctol_BOTTOM)
                 self.playery = y
 
             # Если у нас есть победитель, вернуть его или ее. В противном случае, игнорировать
@@ -215,7 +215,7 @@ label minigame_pong:
         ui.add(PongDisplayable())
         winner = ui.interact(suppress_overlay=True, suppress_underlay=True)
 
-    scene black
+    scene cokol_ping
     show fan
 
     window show None
@@ -236,4 +236,4 @@ label minigame_pong:
         "Конечно.":
             jump minigame_pong
         "Не спасибо.":
-            jump konec
+            jump cok_itazh
