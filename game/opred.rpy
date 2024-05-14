@@ -1,6 +1,6 @@
 # Определение персонажей игры.
 define fan = Character('Анна Фандей', color="#c8ffc8")
-
+define stryp = Character('Стряпунина Нэли Ильинична', color="#c8ffc8")
 
 
 
@@ -8,7 +8,7 @@ define fan = Character('Анна Фандей', color="#c8ffc8")
 # Определение локаций игры.
 
 image fan = "images/pin_pong/fandei.png"
-
+image stryp = "images/lok/stryp.png"
 
 
 image adm = "images/lok/adminictraciya.jpg"
@@ -57,3 +57,4 @@ image ved_prepod = "images/lok/ved_prepod.jpg"
 image turnik_kol = "images/lok/turnik_kol.jpg"
 image kol_itazh = "images/lok/kol_1itazh.jpeg"
 image kol_kab = "images/lok/kol_kab.jpg"
+image kab_pyt_vn = "images/lok/kab_pyt_vn.jpg"

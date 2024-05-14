@@ -454,6 +454,9 @@ label kab_pyt:
     menu kab_pyt_menu:
         "Куда идти?"
 
+        "Зайти в кабинет":
+            jump lekciy
+
         "Вперед":
             jump lectnica_13
 
@@ -787,6 +790,5 @@ label lectnici_kolledj:
 
         "Остаться на этаже":
             jump cok_itazh
-        
         
 
