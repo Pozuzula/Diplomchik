@@ -1,23 +1,15 @@
-# Определение персонажей игры.
-define fan = Character('Анна Фандей', color="#c8ffc8")
-define stryp = Character('Стряпунина Нэли Ильинична', color="#c8ffc8")
-
-
-
 
 # Определение локаций игры.
 
-image fan = "images/pin_pong/fandei.png"
-image stryp = "images/lok/stryp.png"
 
 
 image adm = "images/lok/adminictraciya.jpg"
 image bibliotk_vnt = "images/lok/biblioteca_vntr.jpg"
-image  bibliotk_vnt_2 = "images/lok/biblioteca_vnt_2.jpg"
+image bibliotk_vnt_2 = "images/lok/biblioteka_vnt_2.jpg"
 image bibl = "images/lok/biblioteka.jpg"
-image  bufet = "images/lok/bufet.jpg"
+image bufet = "images/lok/bufet.jpg"
 image cokol_kor = "images/lok/cokol_kor.jpg"
-image  cokol_ping = "images/lok/cokol_ping.jpg"
+image cokol_ping = "images/lok/cokol_ping.jpg"
 image docka_pochet = "images/lok/docka_pochet.jpg"
 image garderob = "images/lok/garderob.jpg"
 image holl_2 = "images/lok/holl_2.jpg"
@@ -58,3 +50,12 @@ image turnik_kol = "images/lok/turnik_kol.jpg"
 image kol_itazh = "images/lok/kol_1itazh.jpeg"
 image kol_kab = "images/lok/kol_kab.jpg"
 image kab_pyt_vn = "images/lok/kab_pyt_vn.jpg"
+
+image kabinet = "images/lok/kabinetik.jpg"
+image kabinet_dva = "images/lok/kabinet_dva.jpg"
+image kabinet_komp = "images/lok/kabinet_komp.jpg"
+
+image prizivnik = "images/lok/priziv.jpg"
+image vipusk = "images/lok/vipesknoy.jpg"
+
+image blek = "images/lok/blak.png"

@@ -1,8 +1,8 @@
 init python:
-    # окно по центру экрана
+   
     import os
     os.environ['SDL_VIDEO_CENTERED'] = '1'
-    # автоматическое объявление спрайтов
+    
     config.automatic_images_minimum_components = 1
     config.automatic_images = [' ', '_', '/']
     config.automatic_images_strip = ["images"]
@@ -18,8 +18,8 @@ init python:
     oActive = False
     oRes = False
 
-    # Инициализация игры, размещение предметов на экране
-    def InitGame(bg, time, *args):
+    
+    def InitG(bg, time, *args):
         global oBg, oXY, pred, oLen, maxLen, oLast, oTime, oMaxTime, oActive, needTimer, oRes
         oXY = []
         pred = []
@@ -38,8 +38,8 @@ init python:
             pred.append(obj_name)
             maxLen += 1
 
-    # Запуск игры
-    def StartGame():
+   
+    def StartG():
         global oActive
         oActive = True
         need = True
@@ -49,14 +49,14 @@ init python:
             if needTimer and (oTime <= .0):
                 need = False
 
-    # Показать экран игры в виде неактивного фона
-    # Уже найденные предметы не будут отображаться
-    def GameAsBG():
+   
+    
+    def AsBG():
         global oActive
         oActive = False
         renpy.show_screen("igra", _layer="master")
 
-    # Обработчик клика по предмету
+    
     def o_click(i):
         global oLen, oRes
         if i >= 0:
@@ -72,7 +72,7 @@ init python:
                     oRes = temp
     oClick = renpy.curry(o_click)
 
-# Собственно экран игры, запускать из функции StartGame()
+
 screen igra:
 
     modal True
@@ -89,6 +89,53 @@ screen igra:
                     action [oClick(i), Return()]
                 else:
                     action []
+
+
+label poick_predmetov:
+
+    show fan at left with dissolve
+    fan "Принеси мне ламу, цветок, ручку и телефон из кабинета"
+
+    scene black
+    window hide
+    show screen info   
+    
+    $ InitG("poisk_fon", 5.0, (0, 0), "cvetok", (0, 0), "lampa", (0, 0), "telefon", (0, 0), "rychka", (0, 0), "tetradka" )
+   
+    $ AsBG()
+    with dissolve
+
+    $ res = StartG()
+    hide screen info 
+
+    $ AsBG()
+
+
+    if oRes:
+        "Спасибо за помощь!"
+
+    "Пока ты пробегал с предметами прошла одна пара"
+    $ proguli =+1
+    hide fan
+    menu poslednee:
+        "Что делать дальше?"
+        "Пойти домой":
+            "Ну а чего? Побегал и так устал с этими вещами"
+            if proguli <= 3:
+                jump konec
+            else:
+                $ proguli +=4
+                jump konec
+        "Идти дальше на пары":
+            "Я в вуз вообще-то за знаниями пришел!"
+            if para == 2:
+                jump lekciy
+            elif para == 1:
+                jump para_2
+            else:
+                jump para_4
+
+
 
 
 

@@ -1,49 +1,47 @@
 ﻿init python:
     res = False
-
+    start_game = 0
+    kurs = 0
+    name_gg = ""
 
 
 label start:
-    jump nachalo_vuz
+         
+    scene vuz_menu
 
-
-label poick_predmetov:
-
-    show fan at left with dissolve
-    fan "Помоги найти мне лампу, цветок, телефон, ручку и тетрадку пожалуйста. Они должны стоять в кабинете"
-
-    scene black
     window hide
-    show screen info   
-    # заполняем экран игры объектами
-    #$ InitGame("poisk_fon", 5.0, (1675, 600), "lampa", (1420, 445), "cvetok", (10, 10), "telefon", (1480, 810), "rychka", (1040, 780), "tetradka")
-    $ InitGame("poisk_fon", 5.0, (0, 0), "cvetok", (0, 0), "lampa", (0, 0), "telefon", (0, 0), "rychka", (0, 0), "tetradka" )
-    # показываем экран игры в качестве простого фона
-    $ GameAsBG()
-    with dissolve
 
-    # запускаем игру и играем
-    $ res = StartGame()
-    hide screen info 
-    # снова показываем в качестве фона
-    # (но уже без найденных во время игры предметов)
-    $ GameAsBG()
+    a '''Наконец-то прошли 11 лет учебы в школе!
 
-    # проверяем результаты игры и обыгрываем их в сценарии
-    if oRes:
-        "Спасибо за помощь!"
-    else:
-        "Мне уже надо идти. В следующий раз будь быстрее!"
+    Сданы экзамены и получен аттестат!
+
+    И вот я стою перед зданием Московского университета
         
-    jump kol_holl
+    Сегодня я пройдусь по его коридорам
+        
+    А уже завтра начну тут учиться '''
+
+    nvl clear
+    nvl hide
+        
+    jump nachalo_vuz
+         
 
 
+label kor_game:
+    scene kol_kor_per
+    show fan at left with dissolve
+    fan "У тебя есть свободная минутка? Можешь мне помочь?"
 
-label ping_pong:
-    hide say
+    menu kor_game_menu:
+        "Согласиться?"
 
-    #play music "menu.mp3"
-    scene black
-    "Мини игра пин понг"
+        "Да":
+            "Конечно!"
+            jump poick_predmetov
 
-    jump minigame_pong #Переход на игру
+        "Нет":
+            "У меня нет на это времени"
+            jump kol_holl
+
+
