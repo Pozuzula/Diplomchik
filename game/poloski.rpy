@@ -24,7 +24,7 @@ screen friendmeter_fan:
         ysize 500
         xalign 0.95
         yalign 0.3
-        value AnimatedValue(value=fr_fan, range=max_fr, delay=1.0)
+        value AnimatedValue(value=fr_fan, range=max_fr, delay=0.5)
         bottom_bar Frame("gui/bar/top.png",10,10)
         top_bar Frame("gui/bar/bot.png",10,10)
 

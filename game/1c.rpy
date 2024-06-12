@@ -330,6 +330,9 @@ label ends_tasks_1c:
 
         "Пойти домой":
             jump konc
+
+        "Пойти в столовую":
+            jump kych
         
 label ban:
     scene kabinet_komp
@@ -347,4 +350,4 @@ label res:
     elif task1 >=5 and <7:
         $ zn +=3
     else:
-        jump konc
+        jump end_task1

@@ -94,7 +94,7 @@ screen igra:
 label poick_predmetov:
 
     show fan at left with dissolve
-    fan "Принеси мне ламу, цветок, ручку и телефон из кабинета"
+    fan "Принеси мне лампу, цветок, ручку и телефон из кабинета"
 
     scene black
     window hide
@@ -128,13 +128,9 @@ label poick_predmetov:
                 jump konec
         "Идти дальше на пары":
             "Я в вуз вообще-то за знаниями пришел!"
-            if para == 2:
-                jump lekciy
-            elif para == 1:
-                jump para_2
-            else:
-                jump para_4
-
+            
+            jump lekciy
+            
 
 
 

@@ -54,8 +54,8 @@ label para_1:
             $ fr_prep_dva -= 10
             prepod_dva "Молодой человек, когда опаздываете на занятия хотя бы извиняйтесь при входе"
             prepod_dva "Садитесь поближе, мы начинаем занятие"
-            hide prepod_dva at left with dissolve
-            hide screen friendmeter_prep_dva
+    hide prepod_dva at left with dissolve
+    hide screen friendmeter_prep_dva        
     stop music
     menu pr:
         "Пропустить текст лекции?"
@@ -158,7 +158,7 @@ label para_1:
         "Да":
             gg "Почему бы не пообщаться с одногруппницей?"
 
-            show yn at left
+            show yn
 
             show screen friendmeter_yn
 
@@ -291,9 +291,10 @@ label para_2:
                 gg "Что-то такое"
                 $ fr_prep_dva += 5
                 $ fr_yn -= 5
+                prepod_dva "Ну хорошо, что-то в голове осталось. Молодцы!"
     
-
-    prepod_dva "Ну хорошо, что-то в голове осталось. Молодцы!"
+    scene kabinet
+    
 
     "Оставшееся время пролетело незаметно"
 
@@ -465,14 +466,9 @@ label cok_prog:
             hide screen friendmeter_xul
             play music zvonok
             
-            if para == 2:
-                jump lekciy
-            elif para == 1:
-                jump para_2
-            else:
-                jump para_4
-            stop music
-
+           
+            jump lekciy
+            
 
 
 
@@ -509,7 +505,7 @@ label kor_prog:
     
 label konc:
     scene vuz_menu
-    if proguli >= 3:
+    if proguli >= 4:
         play music capog
         "У вас накопилось много прогулов"
         "Теперь ты свободный человек без каких-либо обязательств"
@@ -526,7 +522,7 @@ label konc:
         stop music
         return
     
-    elif proguli == 0 and zn >= 3:
+    elif proguli == 0 and zn >= 4:
         scene vipusk
         play music vip
         "Ты ходил на все пары"
@@ -540,7 +536,7 @@ label konc:
         return
             
 
-    elif proguli < 3 and zn <= 3:
+    elif proguli < 4 and zn <= 3:
         scene vipusk
         play music vip
         "Ты ходил на пары, но не особо проявлял интерес к учебе"

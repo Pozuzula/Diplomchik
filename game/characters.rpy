@@ -15,10 +15,13 @@ define stryp = Character('Стряпунина Нэли Ильинична', col
 
 define prepod_dva = Character('Лариса Анатольевна', color="#c8ffc8")
 
+define fedya = Character('Федор Владимирович', color="#c8ffc8")
+
+define preob = Character('Максим Владимирович', color="#c8ffc8")
 
 define a = Character(None, kind= nvl) #avtor
 
-define gg = Character("Васек", color="#c8ffc8") #glavniy geroy
+define gg = Character("Васек", color="#c8ffc8", image = "gg") #glavniy geroy
 
 define priz = Character('Работник военкомата', color="#c8ffc8")
 
@@ -34,3 +37,7 @@ image yn = "images/char/yana.png"
 image igor = "images/char/igor.png"
 
 image prepod_dva = "images/char/prepod.png"
+
+image fedya = "images/char/fedor.png"
+
+image preob = "images/char/preo.png"
